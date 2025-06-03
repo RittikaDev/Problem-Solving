@@ -5,16 +5,16 @@
 type Person = { name: string; age: number; gender: "male" | "female" };
 
 const people: Person[] = [
-  { name: "Monica Geller", age: 28, gender: "female" },
-  { name: "John Smith", age: 30, gender: "male" },
-  { name: "Mili Brown", age: 22, gender: "female" },
-  { name: "Mark Will", age: 35, gender: "male" },
+	{ name: "Monica Geller", age: 28, gender: "female" },
+	{ name: "John Smith", age: 30, gender: "male" },
+	{ name: "Mili Brown", age: 22, gender: "female" },
+	{ name: "Mark Will", age: 35, gender: "male" },
 ];
 
 const getMaleNames = (persons: Person[]): string[] =>
-  persons.filter((p) => p.gender === "male").map((p) => p.name);
+	persons.filter((p) => p.gender === "male").map((p) => p.name);
 
-// console.log("Male Names Only:", getMaleNames(people));
+console.log("Male Names Only:", getMaleNames(people));
 
 /* TASK 2: OBJECT MANIPULATION
 -CREATE AN ARRAY OF OBJECTS REPRESENTING BOOKS WITH PROPERTIES LIKE TITLE, AUTHOR, AND YEAR. WRITE A FUNCTION THAT TAKES THE ARRAY AND RETURNS A NEW ARRAY WITH ONLY THE BOOK TITLES. PRINT THE RESULT.
@@ -22,15 +22,15 @@ const getMaleNames = (persons: Person[]): string[] =>
 type Book = { title: string; author: string; year: number };
 
 const books: Book[] = [
-  { title: "Norwegian Wood", author: "Haruki Murakami", year: 1987 },
-  { title: "Chuti", author: "Rabindranath Thakur", year: 1892 },
-  { title: "Gone Girl", author: "Gillian Flynn", year: 2012 },
+	{ title: "Norwegian Wood", author: "Haruki Murakami", year: 1987 },
+	{ title: "Chuti", author: "Rabindranath Thakur", year: 1892 },
+	{ title: "Gone Girl", author: "Gillian Flynn", year: 2012 },
 ];
 
 const getBookTitles = (bookArray: Book[]): string[] =>
-  bookArray.map((book) => book.title);
+	bookArray.map((book) => book.title);
 
-// console.log("Book Titles Only:", getBookTitles(books));
+console.log("Book Titles Only:", getBookTitles(books));
 
 /**
  * TASK 3: FUNCTION COMPOSITION
@@ -43,7 +43,7 @@ const addFive = (n: number): number => n + 5;
 
 const combinedFunction = (n: number): number => addFive(double(square(n)));
 
-// console.log("Combined Result:", combinedFunction(3));
+console.log("Combined Result:", combinedFunction(3));
 
 /**
  * TASK 4: SORTING OBJECTS
@@ -52,15 +52,15 @@ const combinedFunction = (n: number): number => addFive(double(square(n)));
 type Car = { make: string; model: string; year: number };
 
 const cars: Car[] = [
-  { make: "Volvo", model: "XC70", year: 2025 },
-  { make: "Volkswagen", model: "Tharu", year: 2018 },
-  { make: "Toyota", model: "GR Corolla", year: 2022 },
+	{ make: "Volvo", model: "XC70", year: 2025 },
+	{ make: "Volkswagen", model: "Tharu", year: 2018 },
+	{ make: "Toyota", model: "GR Corolla", year: 2022 },
 ];
 
 const sortCarsByYear = (carArray: Car[]): Car[] =>
-  carArray.sort((a, b) => a.year - b.year);
+	carArray.sort((a, b) => a.year - b.year);
 
-// console.log("Sorted Array:", sortCarsByYear(cars));
+console.log("Sorted Array:", sortCarsByYear(cars));
 
 /*
 TASK 5: FIND AND MODIFY
@@ -68,13 +68,13 @@ TASK 5: FIND AND MODIFY
 */
 
 const updatePersonAge = (
-  arr: Person[],
-  name: string,
-  newAge: number
+	arr: Person[],
+	name: string,
+	newAge: number
 ): Person[] => {
-  return arr.map((person: Person) =>
-    person.name === name ? { ...person, age: newAge } : person
-  );
+	return arr.map((person: Person) =>
+		person.name === name ? { ...person, age: newAge } : person
+	);
 };
 
 console.log("Updated People:", updatePersonAge(people, "John Smith", 26));
@@ -86,7 +86,7 @@ TASK 6: ARRAY REDUCTION
 const numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const sumOfEvenNumbers = (arr: number[]): number =>
-  arr.reduce((sum, num) => (num % 2 === 0 ? sum + num : sum), 0);
+	arr.reduce((sum, num) => (num % 2 === 0 ? sum + num : sum), 0);
 
 console.log("Sum of Even Numbers:", sumOfEvenNumbers(numbers));
 
@@ -96,10 +96,10 @@ TASK 7: UNIQUE VALUES
 */
 const containsDuplicatesNumbers: number[] = [1, 2, 2, 3, 4, 4, 5, 6, 6, 7];
 const uniqueValuesOnly = (arr: number[]): number[] => {
-  return [...new Set(arr)];
+	return [...new Set(arr)];
 };
 
 console.log(
-  "Unique Numbers Only:",
-  uniqueValuesOnly(containsDuplicatesNumbers)
+	"Unique Numbers Only:",
+	uniqueValuesOnly(containsDuplicatesNumbers)
 );
