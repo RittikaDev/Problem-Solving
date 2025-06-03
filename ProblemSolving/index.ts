@@ -71,10 +71,15 @@ const updatePersonAge = (
 	arr: Person[],
 	name: string,
 	newAge: number
-): Person[] => {
-	return arr.map((person: Person) =>
-		person.name === name ? { ...person, age: newAge } : person
-	);
+): Person[] | void => {
+	if (!Array.isArray(arr)) return;
+
+	const personToUpdate = arr.find((person) => person.name === name);
+	if (personToUpdate) {
+		personToUpdate.age = newAge;
+		// console.log("Updated array:", arr);
+		return arr;
+	}
 };
 
 console.log("Updated People:", updatePersonAge(people, "John Smith", 26));

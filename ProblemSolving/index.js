@@ -38,7 +38,14 @@ TASK 5: FIND AND MODIFY
 -WRITE A FUNCTION THAT SEARCHES AN ARRAY OF OBJECTS FOR A SPECIFIC PERSON BY NAME. IF FOUND, MODIFY THEIR AGE PROPERTY. PRINT THE UPDATED ARRAY.
 */
 const updatePersonAge = (arr, name, newAge) => {
-    return arr.map((person) => person.name === name ? Object.assign(Object.assign({}, person), { age: newAge }) : person);
+    if (!Array.isArray(arr))
+        return;
+    const personToUpdate = arr.find((person) => person.name === name);
+    if (personToUpdate) {
+        personToUpdate.age = newAge;
+        // console.log("Updated array:", arr);
+        return arr;
+    }
 };
 console.log("Updated People:", updatePersonAge(people, "John Smith", 26));
 /*
