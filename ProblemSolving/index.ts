@@ -82,7 +82,7 @@ const updatePersonAge = (
 	}
 };
 
-console.log("Updated People:", updatePersonAge(people, "John Smith", 26));
+// console.log("Updated People:", updatePersonAge(people, "John Smith", 26));
 
 /*
 TASK 6: ARRAY REDUCTION
@@ -104,7 +104,138 @@ const uniqueValuesOnly = (arr: number[]): number[] => {
 	return [...new Set(arr)];
 };
 
-console.log(
-	"Unique Numbers Only:",
-	uniqueValuesOnly(containsDuplicatesNumbers)
-);
+// console.log(
+// 	"Unique Numbers Only:",
+// 	uniqueValuesOnly(containsDuplicatesNumbers)
+// );
+
+/*
+TASK 8. CAPITALIZE FIRST LETTER OF EACH WORD
+*/
+function capitalizeWords(str: string): string {
+	return str.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+// console.log(capitalizeWords("hello world"));
+
+/*
+TASK 9. FIND FIRST NON-REPEATING CHARACTER
+*/
+function firstNonRepeat(str: string): string | null {
+	for (let char of str) {
+		if (str.indexOf(char) === str.lastIndexOf(char)) return char;
+	}
+	return null;
+}
+console.log(firstNonRepeat("keep"));
+
+/*
+TASK 10. FIND DUPLICATES IN AN ARRAY
+*/
+function findDuplicates(arr: number[]): number[] | unknown {
+	const seen = new Set();
+	const duplicates = new Set();
+	for (let num of arr) {
+		seen.has(num) ? duplicates.add(num) : seen.add(num);
+	}
+	return Array.from(duplicates);
+}
+
+// console.log(findDuplicates([1, 2, 2, 3, 4, 5]));
+
+/*
+TASK 11: FLATTEN NESTED ARRAYS
+*/
+
+function flattenArray(arr: any[]): any[] {
+	return arr.reduce((flat, curr) => flat.concat(curr), []);
+}
+console.log(flattenArray([1, 2, [3, 4], [5, 6]])); // [1, 2, 3, 4, 5, 6]
+
+/*
+TASK 12: COUNT OCCURRENCES OF EACH ELEMENT
+*/
+function countOccurrences(arr: string[]): Record<string, number> {
+	return arr.reduce((acc, val) => {
+		acc[val] = (acc[val] || 0) + 1;
+		return acc;
+	}, {} as Record<string, number>);
+}
+console.log(countOccurrences(["a", "b", "a", "c", "b", "a"]));
+// { a: 3, b: 2, c: 1 }
+
+/*
+TASK 13: REMOVE FALSY VALUES
+*/
+
+function removeFalsy(arr: any[]): any[] {
+	return arr.filter(Boolean);
+}
+console.log(removeFalsy([0, "hello", false, "", 42, null, "JS", undefined])); // ["hello", 42, "JS"]
+
+/*
+TASK 14: CHUNK AN ARRAY INTO SMALLER ARRAYS
+*/
+function chunkArray<T>(arr: T[], size: number): T[][] {
+	const result: T[][] = [];
+	for (let i = 0; i < arr.length; i += size) {
+		result.push(arr.slice(i, i + size));
+	}
+	return result;
+}
+console.log(chunkArray([1, 2, 3, 4, 5, 6], 2)); // [[1,2],[3,4],[5,6]]
+
+/*
+TASK 15: FIND MAX AND MIN WITHOUT USING MATH
+*/
+function findMinMax(arr: number[]): { min: number; max: number } {
+	let min = arr[0],
+		max = arr[0];
+	for (let num of arr) {
+		if (num < min) min = num;
+		if (num > max) max = num;
+	}
+	return { min, max };
+}
+console.log(findMinMax([2, 5, 1, 9, -3, 7])); // { min: -3, max: 9 }
+
+/*
+TASK 16: REVERSE EACH WORD IN A STRING
+*/
+function reverseWords(str: string): string {
+	return str
+		.split(" ")
+		.map((word) => word.split("").reverse().join(""))
+		.join(" ");
+}
+console.log(reverseWords("JavaScript is fun")); // tpircSavaJ si nuf
+
+/*
+TASK 17: FIND COMMON ELEMENTS BETWEEN TWO ARRAYS
+*/
+function findCommonElements(arr1: number[], arr2: number[]): number[] {
+	return arr1.filter((val) => arr2.includes(val));
+}
+console.log(findCommonElements([1, 2, 3, 4], [3, 4, 5, 6])); // [3,4]
+
+/*
+TASK 18: CONVERT STRING TO CAMEL CASE
+*/
+function toCamelCase(str: string): string {
+	return str
+		.split(/[-_ ]+/)
+		.map((word, index) =>
+			index === 0 ? word.toLowerCase() : word[0].toUpperCase() + word.slice(1)
+		)
+		.join("");
+}
+console.log(toCamelCase("hello-world_js string")); // helloWorldJsString
+
+/*
+TASK 19: FIND SECOND LARGEST NUMBER
+*/
+function secondLargest(arr: number[]): number | null {
+	const uniqueSorted = Array.from(new Set(arr)).sort((a, b) => b - a);
+	return uniqueSorted[1] ?? null;
+}
+console.log(secondLargest([1, 2, 3, 4, 4, 5])); // 4
